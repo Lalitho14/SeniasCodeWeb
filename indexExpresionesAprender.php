@@ -21,7 +21,7 @@
             $titulos = ["Buenas Noches","Gracias","Hola", "No","Nos Vemos", "Perdon", "Por favor", "Si"];
             $informacion = [
             "Buenas NOches: Comienza dirigiendo la palma de tu mano hacia tu hombro, cierra tu puño y extiende el dedo indice y el pulgar, y finaliza llevándola suavemente hasta tu mandíbula. Este gesto es una forma respetuosa de despedida en la lengua de señas.",
-            "Gracias: Coloca la palma de una de tus manos hacia arriba. Con la otra mano, forma un dedo medio firme que apunte hacia la palma extendida. Luego, mueve el dedo hacia la palma de un lado a otro, como un movimiento de ida y vuelta, en un gesto suave de agradecimiento.",
+            "Gracias: Coloca la palma de una de tus manos hacia arriba. Con la otra mano, levanta el  dedo medio firmemente que apunte hacia la palma extendida. Luego, mueve el dedo hacia la palma de un lado a otro, como un movimiento de ida y vuelta, en un gesto suave de agradecimiento.",
 
             "Hola:Levanta la mano y haz un pequeño movimiento hacia arriba, similar a un saludo. La palma de la mano debe estar hacia afuera.",
             "No:Extiende los dedos índice, mientras los demás están recogido. Luego, mueve la mano hacia los lados, como si negarás con la cabeza.",

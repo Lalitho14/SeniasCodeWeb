@@ -19,9 +19,10 @@
             <div class="row mb-5">
               <a href="./indexAbecedarioAprender.php" class="btn btn-lg btn-outline-dark btn-color-amarillo">APRENDER</a>
             </div>
-            <div class="row justify-content-center">
+            <div class="row justify-content-center mb-5">
               <a href="./EjercicosAbecedario.php" class="btn btn-lg btn-color-azul btn-outline-dark text-black">EJERCICIOS</a>
             </div>
+            
           </div>
           <div class="col-auto col-lg-6">
             <img src="./assets/asset04.png" alt="asset04.png" class="img-fluid">

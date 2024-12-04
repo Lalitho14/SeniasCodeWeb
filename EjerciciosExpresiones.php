@@ -19,9 +19,6 @@
       <div class="container mt-3">
         <div class="row justify-content-center m-3">
           <div class="col-auto">
-            <button class="btn btn-color-amarillo btn-outline-dark expresion" id="Buenas_noches">Buenas Noches</button>
-          </div>
-          <div class="col-auto">
             <button class="btn btn-color-amarillo btn-outline-dark expresion" id="Gracias">Gracias</button>
           </div>
           <div class="col-auto">
@@ -40,10 +37,13 @@
             <button class="btn btn-color-amarillo btn-outline-dark expresion" id="Por_favor">Por favor</button>
           </div>
           <div class="col-auto">
-            <button class="btn btn-color-amarillo btn-outline-dark">Si</button>
+            <button class="btn btn-color-amarillo btn-outline-dark expresion" id="Si">Si</button>
           </div>
         </div>
+
         <div class="row justify-content-center m-3" id="ExpresionSelected"></div>
+        <div class="row justify-content-center" id="Resultado"></div>
+
         <div class="row justify-content-center">
           <div class="col-auto col-lg-6 align-self-center">
             <video id="webcam" autoplay class="videoView w-10"></video>

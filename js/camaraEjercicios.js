@@ -35,7 +35,7 @@ async function predictWebcam() {
   if (results.handednesses.length > 0 && caputarando == false) {
     console.log("Mano detectada")
     numFrames++;
-    if (numFrames > 180) {
+    if (numFrames > 100) {
       console.log(numFrames)
       numFrames = 0
       console.log(numFrames)
@@ -61,7 +61,7 @@ async function EnviarFrame() {
 
   const base64Image = canvas.toDataURL('image/jpg').split(',')[1];
 
-  const response = await fetch('http://192.168.100.79:5000/uploadFrame', {
+  const response = await fetch('http://192.168.198.65:5000/uploadFrame', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ image: base64Image }),
