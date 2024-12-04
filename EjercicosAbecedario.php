@@ -17,7 +17,7 @@
 <body>
   <main class="container">
     <div class="principal menu">
-      <h1>EJERCICIOS ABECEDARIO</h1>
+      <img src="./assets/aprendeyjuega.jpeg" alt="">
       <div class="container">
 
         <div class="row justify-content-center m-3">
