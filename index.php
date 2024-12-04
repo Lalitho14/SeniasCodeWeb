@@ -22,7 +22,7 @@
         </div>
         <div class="row justify-content-center m-2">
           <div class="col-auto col-lg-6 align-self-center">
-            <img src="./assets/asset01.png" alt="asset01" class="img-fluid" style="max-height: 640px;">
+            <img src="./assets/asset01.png" alt="asset01" class="img-fluid" style="width: 300px; height: 350px">
           </div>
           <div class="col-auto col-lg-6 align-self-center">
             <h2 class="m-5">Explora, aprende y conecta con el mundo a través de las señas.</h2>

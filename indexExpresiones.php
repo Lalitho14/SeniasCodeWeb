@@ -13,8 +13,8 @@
   <main class="container">
     <div class="principal inicio">
       <div class="container p-5">
-        <h1 class="text-white">La Lengua de Señas Mexicana (LSM) tiene una estructura gramatical diferente al español. Por ejemplo, en lugar de decir "Yo voy al cine", en LSM se diría "Yo cine voy", reflejando su propio orden de palabras y cultura.
-        </h1>
+        <h2 class="text-white">La Lengua de Señas Mexicana (LSM) tiene una estructura gramatical diferente al español. Por ejemplo, en lugar de decir "Yo voy al cine", en LSM se diría "Yo cine voy", reflejando su propio orden de palabras y cultura.
+        </h2>
         <div class="row justify-content-center mt-5">
           <div class="col-auto col-lg-6 align-self-center px-5">
             <div class="row mb-5">
@@ -25,7 +25,7 @@
             </div>
           </div>
           <div class="col-auto col-lg-6">
-            <img src="./assets/asset05.png" alt="asset04.png" class="img-fluid">
+            <img src="./assets/asset05.png" alt="asset04.png" class="img-fluid" style="width: 300px; height: 350px">
           </div>
         </div>
       </div>
