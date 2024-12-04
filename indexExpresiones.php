@@ -18,10 +18,10 @@
         <div class="row justify-content-center mt-5">
           <div class="col-auto col-lg-6 align-self-center px-5">
             <div class="row mb-5">
-              <a href="./indexAbecedarioAprender.php" class="btn btn-lg btn-outline-dark btn-color-amarillo">APRENDER</a>
+              <a href="./indexExpresionesAprender.php" class="btn btn-lg btn-outline-dark btn-color-amarillo">APRENDER</a>
             </div>
             <div class="row justify-content-center">
-              <a href="./EjercicosAbecedario.php" class="btn btn-lg btn-color-azul btn-outline-dark text-black">EJERCICIOS</a>
+              <a href="./EjerciciosExpresiones.php" class="btn btn-lg btn-color-azul btn-outline-dark text-black">EJERCICIOS</a>
             </div>
           </div>
           <div class="col-auto col-lg-6">
