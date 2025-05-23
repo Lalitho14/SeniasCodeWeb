@@ -35,7 +35,7 @@ startButton.addEventListener('click', async () => {
     formData.append('video', videoBlob, 'video.webm'); // Es importante que la clave sea 'video'
 
     // Enviar el video al servidor
-    const response = await fetch('http://192.168.198.65:5000/upload_video', {
+    const response = await fetch('http://localhost:5000/upload_video', {
       method: 'POST',
       body: formData,
     });

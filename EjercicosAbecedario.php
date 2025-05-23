@@ -19,22 +19,25 @@
     <div class="principal menu">
       <img src="./assets/aprendeyjuega.jpeg" alt="">
       <div class="container">
-
-        <div class="row justify-content-center m-3">
+        <div class="row justify-content-center">
           <div class="col-auto col-lg-6 align-self-center">
             <video id="webcam" autoplay class="videoView w-10"></video>
             <canvas id="frame" style="display:none;"></canvas>
           </div>
         </div>
+        <div class="row justify-content-center m-3" id="Resultado">
+        </div>
         <div class="row justify-content-center m-3">
           <div class="col-auto col-lg-6 align-self-center">
             <button class="btn btn-color-azul btn-outline-dark" id="GenerarPalabra">Generar Palabra</button>
           </div>
+          <div class="col-auto col-lg-6 align-self-center">
+            <button class="btn btn-color-azul btn-outline-dark" id="GenerarNuevaLetra">Enviar Nueva Letra</button>
+          </div>
         </div>
         <div class="row justify-content-center m-3" id="PalabraRecibida">
         </div>
-        <div class="row justify-content-center m-3" id="Resultado">
-        </div>
+
         <div class="row justify-content-center m-3">
           <div class="col-auto col-lg-6 align-self-center">
             <a href="./index.php" class="btn btn-color-azul btn-outline-dark">Regresar</a>

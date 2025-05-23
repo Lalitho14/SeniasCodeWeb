@@ -12,6 +12,7 @@ let caputarando = false;
 let stream;
 let numFrames = 0;
 let letra = "";
+var enviar_nueva_letra = true;
 
 const createHandLandmarker = async () => {
   const vision = await FilesetResolver.forVisionTasks("https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.0/wasm");
@@ -32,13 +33,12 @@ async function predictWebcam() {
     results = handLandarker.detectForVideo(video, startTimeMs);
   }
 
-  if (results.handednesses.length > 0 && caputarando == false) {
+  if (results.handednesses.length > 0 && caputarando == false && enviar_nueva_letra === true) {
     console.log("Mano detectada")
     numFrames++;
-    if (numFrames > 100) {
+    if (numFrames > 60) {
       console.log(numFrames)
       numFrames = 0
-      console.log(numFrames)
       caputarando = true
       await EnviarFrame()
     }
@@ -53,45 +53,84 @@ async function predictWebcam() {
 }
 
 async function EnviarFrame() {
-  const context = canvas.getContext("2d");
-  canvas.width = video.videoWidth;
-  canvas.height = video.videoHeight;
+  enviar_nueva_letra = false
+  console.log("Grabando")
+  document.getElementById("Resultado").innerHTML += `
+    <div class="alert alert-warning" role="alert">
+      ¡ Grabando... !
+    </div>
+  `;
+  const mediaRecorder = new MediaRecorder(stream);
+  const chunks = [];
 
-  context.drawImage(video, 0, 0, canvas.width, canvas.height);
+  mediaRecorder.ondataavailable = (event) => {
+    chunks.push(event.data);
+  };
 
-  const base64Image = canvas.toDataURL('image/jpg').split(',')[1];
+  mediaRecorder.onstop = async () => {
+    document.getElementById("Resultado").innerHTML = `
+      <div class="alert btn-success alert-success" role="alert">
+        ¡ Enviando... !
+      </div>
+    `;
+    // Crear un blob del video grabado
+    const videoBlob = new Blob(chunks, { type: 'video/webm' });
 
-  const response = await fetch('http://192.168.198.65:5000/uploadFrame', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ image: base64Image }),
-  });
+    // Crear FormData y agregar el video
+    const formData = new FormData();
+    formData.append('video', videoBlob, 'video.webm'); // Es importante que la clave sea 'video'
 
-  const result = await response.text();
+    // Enviar el video al servidor
+    const response = await fetch('http://localhost:5000/upload_video', {
+      method: 'POST',
+      body: formData,
+    });
 
-  if (result == palabra[indice_letra]) {
-    document.getElementById("pos" + indice_letra).classList.remove('card-letra-select')
-    document.getElementById("pos" + indice_letra).classList.add('card-letra')
-    n_palabra = RemplazarCaracter(n_palabra, indice_letra, palabra[indice_letra]);
-    ActualizarPalabraContainer(n_palabra);
-    indice_letra = IndicePalabra(n_palabra);
+    document.getElementById("Resultado").innerHTML = ``;
 
-    if (indice_letra == -1) {
-      console.log("Ganaste");
-      palabraContainer.innerHTML = ``;
-      document.getElementById("Resultado").innerHTML = `    
+
+    //////////////////////////////////////////////////////
+    const result = await response.text();
+
+    console.log(result);
+
+    if (result == palabra[indice_letra]) {
+      document.getElementById("pos" + indice_letra).classList.remove('card-letra-select')
+      document.getElementById("pos" + indice_letra).classList.add('card-letra')
+      n_palabra = RemplazarCaracter(n_palabra, indice_letra, palabra[indice_letra]);
+      ActualizarPalabraContainer(n_palabra);
+      indice_letra = IndicePalabra(n_palabra);
+
+      if (indice_letra == -1) {
+        console.log("Ganaste");
+        palabraContainer.innerHTML = ``;
+        document.getElementById("Resultado").innerHTML = `    
         <div class="alert alert-success" role="alert">
           ¡Completaste la palabra! Intentalo con una nueva.
         </div>
       `
+      }
+      else {
+        document.getElementById("pos" + indice_letra).classList.remove('card-letra')
+        document.getElementById("pos" + indice_letra).classList.add('card-letra-select')
+      }
     }
     else {
-      document.getElementById("pos" + indice_letra).classList.remove('card-letra')
-      document.getElementById("pos" + indice_letra).classList.add('card-letra-select')
+      document.getElementById("Resultado").innerHTML += `
+        <div class="alert alert-danger" role="alert">
+          ¡ Letra equivocada ! Se detecto ${result},
+          Pulse Enviar Nueva Letra para intentar otra vez...
+        </div>
+      `;
     }
-  }
 
-  console.log(result);
+  };
+
+  // Iniciar la grabación y detenerla después de 3.5 segundos
+  mediaRecorder.start();
+  setTimeout(async () => {
+    mediaRecorder.stop();
+  }, 2500)
 }
 
 createHandLandmarker()
@@ -159,4 +198,10 @@ btn_generar.addEventListener('click', () => {
   console.log(palabra)
   console.log(n_palabra)
 
+});
+
+const btn_enviar_nueva_letra = document.getElementById("GenerarNuevaLetra")
+btn_enviar_nueva_letra.addEventListener('click', () => {
+  document.getElementById("Resultado").innerHTML = ``;
+  enviar_nueva_letra = true;
 });
